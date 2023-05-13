@@ -264,6 +264,7 @@ public enum StripePaymentMethodCardWalletType: String, StripeModel {
     case masterpass
     case samsungPay = "samsung_pay"
     case visaCheckout = "visa_checkout"
+    case link
 }
 
 public struct StripePaymentMethodCardWalletVisaCheckout: StripeModel {
