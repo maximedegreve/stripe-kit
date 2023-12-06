@@ -86,6 +86,7 @@ public enum StripeEventObject: StripeModel {
     case topup(StripeTopUp)
     case transfer(StripeTransfer)
     case verificationSession(StripeVerificationSession)
+    case billingPortalSession(BillingPortalSession)
     
     public init(from decoder: Decoder) throws {
         let object = try decoder
@@ -192,6 +193,8 @@ public enum StripeEventObject: StripeModel {
             self = try .topup(StripeTopUp(from: decoder))
         case "transfer":
             self = try .transfer(StripeTransfer(from: decoder))
+        case "billing_portal.session":
+            self = try .billingPortalSession(BillingPortalSession(from: decoder))
         default:
             throw DecodingError.keyNotFound(CodingKeys.object,
                                             DecodingError.Context(codingPath: [CodingKeys.object],
@@ -568,6 +571,8 @@ public enum StripeEventType: String, StripeModel {
     case transferReversed = "transfer.reversed"
     /// Occurs whenever a transfer's description or metadata is updated.
     case transferUpdated = "transfer.updated"
+    /// Occurs whenever a portal session is created
+    case billingPortalSession = "billing_portal.session.created"
     /// An event not supported by the event type
     case unknownEvent = "unknown"
 }
