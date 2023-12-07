@@ -12,7 +12,7 @@ public struct BillingPortalSession: StripeModel {
     let id: String
     let object: String
     let configuration: String
-    let created: Int
+    let created: Date
     let customer: String
     let livemode: Bool
     let onBehalfOf: String?
