@@ -17,7 +17,7 @@ public struct StripeMandate: StripeModel {
     /// Has the value true if the object exists in live mode or the value false if the object exists in test mode.
     public var livemode: Bool?
     /// If this is a multi_use mandate, this hash contains details about the mandate.
-    public var multiUse: String?
+    @Expandable<MandateMultiUse> public var multiUse: String?
     /// ID of the payment method associated with this mandate.
     @Expandable<StripePaymentMethod> public var paymentMethod: String?
     /// Additional mandate information specific to the payment method type.
@@ -28,6 +28,9 @@ public struct StripeMandate: StripeModel {
     public var status: StripeMandateStatus?
     /// The type of the mandate, one of `multi_use` or `single_use`.
     public var type: StripeMandateType?
+    
+    public struct MandateMultiUse: StripeModel {
+    }
 }
 
 public struct StripeMandateCustomerAcceptance: StripeModel {
