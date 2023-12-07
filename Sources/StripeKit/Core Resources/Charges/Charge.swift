@@ -668,6 +668,7 @@ public enum StripeChargePaymentDetailsType: String, StripeModel {
     case sofort
     case stripeAccount = "stripe_account"
     case wechat
+    case link
 }
 
 public struct StripeChargePaymentDetailsWechat: StripeModel {
